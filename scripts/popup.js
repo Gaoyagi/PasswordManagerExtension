@@ -1,8 +1,9 @@
-let pwdGen = document.getElementById("pwdgen");
+
+const pwdGen = document.getElementById("pwdgen");
+const savePwd = document.getElementById("savepwd");
 const pwd = document.getElementById("password");
 
 pwdGen.addEventListener("click",genPwd)
-
 function genPwd() {
   length = Math.random() * (55) + 10;
   var str = "";
@@ -17,3 +18,4 @@ function genPwd() {
   console.log(str)
   pwd.innerHTML = str;
 }
+
