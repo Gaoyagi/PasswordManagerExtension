@@ -1,10 +1,11 @@
-
 const pwdGen = document.getElementById("pwdgen");
 const savePwd = document.getElementById("savepwd");
+const downloadPwd = document.getElementById("download");
 const pwd = document.getElementById("password");
+const pwdList = []
 
-pwdGen.addEventListener("click",genPwd)
-function genPwd() {
+pwdGen.addEventListener("click", genPassword)
+function genPassword() {
   length = Math.random() * (55) + 10;
   var str = "";
   for (counter = 0; counter <= length; counter++) {
@@ -15,7 +16,22 @@ function genPwd() {
       counter--;
     }
   }
-  console.log(str)
+  
   pwd.innerHTML = str;
 }
 
+savePwd.addEventListener("click", savePassword)
+function savePassword() {
+  pwdList.push(pwd.value)
+}
+
+downloadPwd.addEventListener("click", dowloadPassword)
+function dowloadPassword() {
+  var textToSave = pwdList
+  var hiddenElement = document.createElement('a');
+
+  hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+  hiddenElement.target = '_blank';
+  hiddenElement.download = 'myFile';
+  hiddenElement.click();
+}
