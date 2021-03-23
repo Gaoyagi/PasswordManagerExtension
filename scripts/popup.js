@@ -41,7 +41,7 @@ function dowloadPassword() {
   }
   
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'myFile.txt';
+  hiddenElement.download = 'myPWDS.txt';
   hiddenElement.click();
 }
 
