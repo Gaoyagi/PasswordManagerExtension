@@ -22,16 +22,19 @@ function genPassword() {
 
 savePwd.addEventListener("click", savePassword)
 function savePassword() {
-  pwdList.push(pwd.value)
+  pwdList.push(pwd.innerHTML)
+  console.log(pwd.innerHTML)
+  console.log(pwdList)
 }
 
 downloadPwd.addEventListener("click", dowloadPassword)
 function dowloadPassword() {
   var textToSave = pwdList
+  
   var hiddenElement = document.createElement('a');
 
   hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'myFile';
+  hiddenElement.download = 'myFile.txt';
   hiddenElement.click();
 }
