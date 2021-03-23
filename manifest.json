@@ -1,7 +1,7 @@
 {
   "name": "Password Manager",
   "description": "Generate and save a secure password",
-  "version": "0.0",
+  "version": "1.0",
   "manifest_version": 3,
   "permissions": ["storage", "activeTab", "scripting"],
   "action": {
