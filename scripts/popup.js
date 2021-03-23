@@ -23,18 +23,32 @@ function genPassword() {
 savePwd.addEventListener("click", savePassword)
 function savePassword() {
   pwdList.push(pwd.innerHTML)
-  console.log(pwd.innerHTML)
-  console.log(pwdList)
 }
 
 downloadPwd.addEventListener("click", dowloadPassword)
 function dowloadPassword() {
   var textToSave = pwdList
-  
   var hiddenElement = document.createElement('a');
-
-  hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+  hiddenElement.href = 'data:attachment/text,'
+  for (x=0; x<pwdList.length; x++) {
+    password = pwdList[x]+"\n"
+    hiddenElement.href += encodeURIComponent(password);
+  }
+  // hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
   hiddenElement.target = '_blank';
   hiddenElement.download = 'myFile.txt';
   hiddenElement.click();
 }
+
+// downloadPwd.addEventListener("click", dowloadPassword)
+// function dowloadPassword() {
+//   const a = document.createElement('a');
+//   const file = new Blob(pwdList, {type: 'text/plain'});
+  
+//   a.href= URL.createObjectURL(file);
+//   a.download = 'myFile.txt';
+//   a.click();
+
+// 	URL.revokeObjectURL(a.href);
+// }
+
