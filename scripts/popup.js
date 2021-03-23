@@ -2,7 +2,10 @@ const pwdGen = document.getElementById("pwdgen");
 const savePwd = document.getElementById("savepwd");
 const downloadPwd = document.getElementById("download");
 const pwd = document.getElementById("password");
-const pwdList = []
+const pwdList = [];
+
+savePwd.style.visibility = 'hidden';
+downloadPwd.style.visibility = 'hidden';
 
 pwdGen.addEventListener("click", genPassword)
 function genPassword() {
@@ -18,11 +21,13 @@ function genPassword() {
   }
   
   pwd.innerHTML = str;
+  savePwd.style.visibility = 'visible';
 }
 
 savePwd.addEventListener("click", savePassword)
 function savePassword() {
-  pwdList.push(pwd.innerHTML)
+  pwdList.push(pwd.innerHTML);
+  downloadPwd.style.visibility = 'visible';
 }
 
 downloadPwd.addEventListener("click", dowloadPassword)
@@ -34,21 +39,10 @@ function dowloadPassword() {
     password = pwdList[x]+"\n"
     hiddenElement.href += encodeURIComponent(password);
   }
-  // hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+  
   hiddenElement.target = '_blank';
   hiddenElement.download = 'myFile.txt';
   hiddenElement.click();
 }
 
-// downloadPwd.addEventListener("click", dowloadPassword)
-// function dowloadPassword() {
-//   const a = document.createElement('a');
-//   const file = new Blob(pwdList, {type: 'text/plain'});
-  
-//   a.href= URL.createObjectURL(file);
-//   a.download = 'myFile.txt';
-//   a.click();
-
-// 	URL.revokeObjectURL(a.href);
-// }
 
